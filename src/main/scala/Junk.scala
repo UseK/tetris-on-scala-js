@@ -1,3 +1,4 @@
+package com.junk.usek
 case class Aiee(x: Int, z: String) {
   val y: Int = x + 114514
   def aiee: String = "called aiee"

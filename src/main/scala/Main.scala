@@ -1,3 +1,5 @@
+import com.junk.usek.Practice
+
 class User(val name: String) {
   def sayHi: Unit = {
     println(s"Hai! $name")
