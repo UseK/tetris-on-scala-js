@@ -4,6 +4,12 @@ case class Aiee(x: Int, z: String) {
 }
 
 class Practice {
+  def cannotExpandLater: String = {
+    var s = "before"
+    val expanded = s"($s)"
+    s = "after"
+    expanded //=> "(before)"
+  }
   def doubleLoop: IndexedSeq[String] = {
     for (i <- 0 to 3; j <- 0 to 3; if i != j) yield s"$i-$j"
   }

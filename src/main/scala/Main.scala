@@ -22,5 +22,7 @@ object Main {
     val tom = AdminUser("tom", 23)
     println(s"${tom.name}(${tom.age})")
     tom.sayHi
+    val pr = new Practice
+    println(pr.cannotExpandLater)
   }
 }
