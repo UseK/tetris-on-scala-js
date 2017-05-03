@@ -12,6 +12,9 @@ class Practice {
     expanded //=> "(before)"
   }
   def doubleLoop: IndexedSeq[String] = {
+    /* 23章 for 式の再説、23.1節 for式
+    複数のジェネレーター
+    * */
     for (i <- 0 to 3; j <- 0 to 3; if i != j) yield s"$i-$j"
   }
 
