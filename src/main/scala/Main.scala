@@ -2,7 +2,7 @@ import com.junk.usek.Practice
 
 /* 10章 合成と継承 10.6節 パラメーターフィールド
  name is 'parametric fields' */
-class User(val name: String) {
+class User(final val name: String) {
   protected val role = "normal"
 
   def sayHi: Unit = {
@@ -17,7 +17,7 @@ object User {
   def apply(name: String): User = new User(name)
 }
 
-class AdminUser(name: String, val age: Int) extends User(name) {
+final class AdminUser(name: String, val age: Int) extends User(name) {
   override val role = "admin"
   override def sayHi: Unit = {
     super.sayHi
