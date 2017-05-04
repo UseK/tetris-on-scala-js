@@ -8,7 +8,7 @@ trait TalkAble {
  name is 'parametric fields' */
 class User(final val name: String) extends TalkAble {
   protected val role = "normal"
-  def message() = s"I am $name"
+  override def message(): String = s"I am $name"
 
   def sayHi: Unit = {
     /* 5章 基本型と演算子 5.3節 文字列補間(string interpolation)
@@ -35,8 +35,8 @@ object AdminUser {
 
 object Main {
   def main(args: Array[String]): Unit = {
-    val bob = User("bob")
-    bob.talk
+    val y = new Yeah with I with My with Me
+    println(y.message("Aiee"))
   }
 
   private def junk = {
