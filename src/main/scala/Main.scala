@@ -3,6 +3,8 @@ import com.junk.usek.Practice
 /* 10章 合成と継承 10.6節 パラメーターフィールド
  name is 'parametric fields' */
 class User(val name: String) {
+  protected val role = "normal"
+
   def sayHi: Unit = {
     /* 5章 基本型と演算子 5.3節 文字列補間(string interpolation)
     s"Hai! $name" is 加工文字列リテラル(processed string literal)
@@ -16,6 +18,7 @@ object User {
 }
 
 class AdminUser(name: String, val age: Int) extends User(name) {
+  override val role = "admin"
   override def sayHi: Unit = {
     super.sayHi
     println("I'm admin")
@@ -27,9 +30,12 @@ object AdminUser {
 
 object Main {
   def main(args: Array[String]): Unit = {
+    val bob = User("bob")
+    //bob.role //inaccessible
     val tom = AdminUser("tom", 23)
     println(s"${tom.name}(${tom.age})")
     tom.sayHi
+    println(tom.role) // accessibility override
     val pr = new Practice
     println(pr.cannotExpandLater)
   }
