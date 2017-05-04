@@ -26,3 +26,8 @@ class Yeah extends God{
 abstract class God {
   def message(m:String): String
 }
+
+trait TalkAble {
+  def talk() = println(s"message:$message")
+  def message():String
+}

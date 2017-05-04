@@ -1,8 +1,4 @@
 import com.junk.usek.Practice
-trait TalkAble {
-  def talk() = println(s"message:$message")
-  def message():String
-}
 
 /* 10章 合成と継承 10.6節 パラメーターフィールド
  name is 'parametric fields' */
@@ -35,8 +31,8 @@ object AdminUser {
 
 object Main {
   def main(args: Array[String]): Unit = {
-    val y = new Yeah with I with My with Me
-    println(y.message("Aiee"))
+    val fo = new FunctionObject
+    println(fo.mult(2, 3))
   }
 
   private def junk = {
