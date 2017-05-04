@@ -1,9 +1,14 @@
 import com.junk.usek.Practice
+trait TalkAble {
+  def talk() = println(s"message:$message")
+  def message():String
+}
 
 /* 10章 合成と継承 10.6節 パラメーターフィールド
  name is 'parametric fields' */
-class User(final val name: String) {
+class User(final val name: String) extends TalkAble {
   protected val role = "normal"
+  def message() = s"I am $name"
 
   def sayHi: Unit = {
     /* 5章 基本型と演算子 5.3節 文字列補間(string interpolation)
@@ -30,6 +35,11 @@ object AdminUser {
 
 object Main {
   def main(args: Array[String]): Unit = {
+    val bob = User("bob")
+    bob.talk
+  }
+
+  private def junk = {
     val bob = User("bob")
     //bob.role //inaccessible
     val tom = AdminUser("tom", 23)
