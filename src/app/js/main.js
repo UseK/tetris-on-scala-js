@@ -1,16 +1,21 @@
-/**
- * Created by yf on 2017/05/05.
- */
-(function() {
-    'use strict'
-    let stage = document.getElementById('stage')
-    if (typeof stage.getContext === 'undefined') {
-        return
+"use strict"
+class MyCanvas {
+  constructor(id) {
+    const canvas = document.getElementById(id)
+    if (typeof canvas.getContext === 'undefined') {
+      return
     }
-    let context = stage.getContext('2d')
-    context.width = 480
-    context.height = 260
-    context.strokeRect(100, 20, 100, 60)
-    console.log(context.height)
-    context.fillRect(110, 30, 100, 60)
+    this.context = canvas.getContext('2d')
+    this.context.width = 480
+    this.context.height = 260
+  }
+  drawRect() {
+    this.context.strokeRect(100, 20, 100, 60)
+    console.log(this.context.height)
+    this.context.fillRect(110, 30, 100, 60)
+  }
+}
+(function() {
+  const my_canvas = new MyCanvas('stage')
+  my_canvas.drawRect()
 })()
