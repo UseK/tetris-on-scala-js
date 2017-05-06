@@ -1,4 +1,5 @@
 import com.junk.usek.Practice
+import scala.scalajs.js.JSApp
 
 /* 10章 合成と継承 10.6節 パラメーターフィールド
  name is 'parametric fields' */
@@ -29,8 +30,8 @@ object AdminUser {
   def apply(name: String, age: Int): AdminUser = new AdminUser(name, age)
 }
 
-object Main {
-  def main(args: Array[String]): Unit = {
+object Main extends JSApp {
+  def main(): Unit = {
     val fo = new FunctionObject
     println(fo.mult(2, 3))
   }
