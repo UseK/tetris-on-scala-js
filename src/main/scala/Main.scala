@@ -32,13 +32,9 @@ object AdminUser {
   def apply(name: String, age: Int): AdminUser = new AdminUser(name, age)
 }
 
-object Main extends JSApp {
-  def main(): Unit = {
-    val fo = new FunctionObject
-    println(fo.mult(2, 3))
-    appendPar(document.body, "Hello world")
+object Main {
+  def main(args: Array[String]): Unit = {
   }
-
   def appendPar(targetNode: dom.Node, text: String): Unit = {
     val parNode = document.createElement("p")
     val textNode = document.createTextNode(text)
