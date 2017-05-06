@@ -1,5 +1,7 @@
 import com.junk.usek.Practice
 import scala.scalajs.js.JSApp
+import org.scalajs.dom
+import dom.document
 
 /* 10章 合成と継承 10.6節 パラメーターフィールド
  name is 'parametric fields' */
@@ -34,6 +36,14 @@ object Main extends JSApp {
   def main(): Unit = {
     val fo = new FunctionObject
     println(fo.mult(2, 3))
+    appendPar(document.body, "Hello world")
+  }
+
+  def appendPar(targetNode: dom.Node, text: String): Unit = {
+    val parNode = document.createElement("p")
+    val textNode = document.createTextNode(text)
+    parNode.appendChild(textNode)
+    targetNode.appendChild(parNode)
   }
 
   private def junk = {
