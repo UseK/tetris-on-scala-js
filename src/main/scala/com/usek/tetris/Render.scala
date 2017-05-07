@@ -19,14 +19,25 @@ class Render(id: String) {
   val blockW = 200 / board.w
 
   def drawBoard(): Unit = {
-    for(x <- 0 to board.w) {
-      drawBlock(x, 100)
+    for (x <- 0 to board.w) {
+      for (y <- 0 to board.h) {
+        drawFrame(x, y)
+      }
     }
   }
 
+  def drawFrame(x: Int, y: Int): Unit = {
+    val blockX = x * blockW
+    val blockY = y * blockH
+    println(blockX, blockY)
+    context.strokeRect(blockX, blockY, blockW, blockH)
+  }
+
   def drawBlock(x: Int, y: Int): Unit = {
-    println(x, y, blockW, blockH)
-    context.fillRect(x, y, blockW, blockH)
+    val blockX = x * blockW
+    val blockY = y * blockH
+    println(blockX, blockY)
+    context.fillRect(blockX, blockY, blockW, blockH)
   }
 }
 

@@ -5,7 +5,7 @@ import scala.scalajs.js.JSApp
 object Tetris extends JSApp{
   def main(): Unit = {
     val c = Render("stage")
-    c.drawBoard()
+    c.drawBoard
     println("I'm Tetris class")
   }
 }
