@@ -44,10 +44,3 @@ object MyCanvas {
   def apply(id: String): MyCanvas = new MyCanvas(id)
 }
 
-object Canvas extends JSApp {
-  def main(): Unit = {
-    val c = MyCanvas("stage")
-    c.animation(100)
-    println("I'm Canvas class")
-  }
-}
