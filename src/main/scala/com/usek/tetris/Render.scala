@@ -8,6 +8,7 @@ import scala.scalajs.js.JSApp
 import scala.scalajs.js.timers.setTimeout
 
 class Render(id: String, width: Int, height: Int) {
+
   val canvas = document
     .getElementById(id)
     .asInstanceOf[Canvas]
@@ -28,6 +29,10 @@ class Render(id: String, width: Int, height: Int) {
     }
   }
 
+  def drawMino(mino: Mino) = {
+    mino.eachPositions(drawBlock(_, _))
+  }
+
   def drawFrame(x: Int, y: Int): Unit = {
     val blockX = x * blockW
     val blockY = y * blockH
@@ -42,6 +47,8 @@ class Render(id: String, width: Int, height: Int) {
 }
 
 object Render {
-  def apply(id: String, width: Int, height: Int): Render = new Render(id, width, height)
+  def apply(id: String, width: Int, height: Int): Render = {
+    new Render(id, width, height)
+  }
 }
 
