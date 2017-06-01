@@ -18,28 +18,34 @@ class Render(id: String, width: Int, height: Int) {
   canvas.width = width
   canvas.height = height
   val board = Board(h=20, w=10)
-  val blockH = height / board.h
-  val blockW = width / board.w
+  val blockH = height / board.nHeight
+  val blockW = width / board.nWidth
+
+  def draw(): Unit = {
+    context.clearRect(0, 0, width, height)
+    drawBoard
+    drawCurrentMino()
+  }
 
   def drawBoard(): Unit = {
-    for (x <- 0 to board.w) {
-      for (y <- 0 to board.h) {
+    for (x <- 0 to board.nWidth) {
+      for (y <- 0 to board.nHeight) {
         drawFrame(x, y)
       }
     }
   }
 
-  def drawMino(mino: Mino) = {
-    mino.eachPositions(drawBlock(_, _))
+  def drawCurrentMino(): Unit = {
+    board.currentMino eachPositions(drawBlock(_, _))
   }
 
-  def drawFrame(x: Int, y: Int): Unit = {
+  private def drawFrame(x: Int, y: Int): Unit = {
     val blockX = x * blockW
     val blockY = y * blockH
     context.strokeRect(blockX, blockY, blockW, blockH)
   }
 
-  def drawBlock(x: Int, y: Int): Unit = {
+  private def drawBlock(x: Int, y: Int): Unit = {
     val blockX = x * blockW
     val blockY = y * blockH
     context.fillRect(blockX, blockY, blockW, blockH)

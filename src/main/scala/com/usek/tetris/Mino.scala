@@ -3,7 +3,7 @@ package com.usek.tetris
 /**
   * Created by yf on 2017/05/30.
   */
-case class Position(x: Int, y:Int)
+case class Position(var x: Int, var y:Int)
 
 class Mino {
   val shape = List(
@@ -16,7 +16,7 @@ class Mino {
     for (y <- 0 until shape.length) {
       for (x <- 0 until shape(y).length) {
         if (shape(y)(x)) {
-          op(x, y)
+          op(x + position.x, y + position.y)
         }
       }
     }
