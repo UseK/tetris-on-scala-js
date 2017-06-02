@@ -5,7 +5,7 @@ package com.usek.tetris
   */
 case class Position(var x: Int, var y:Int)
 
-class Mino {
+class Mino extends Renderable {
   val shape = List(
     List(true, false, false),
     List(true, true,  true)
@@ -20,5 +20,9 @@ class Mino {
         }
       }
     }
+  }
+
+  override def render(r: Render): Unit = {
+    eachPositions(r.drawBlock(_, _))
   }
 }

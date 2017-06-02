@@ -1,12 +1,16 @@
 package com.usek.tetris
+import org.scalajs.dom.{ CanvasRenderingContext2D => Context }
 
-class Board(val nHeight: Int, val nWidth: Int) {
+class Board(val nHeight: Int, val nWidth: Int) extends Renderable{
 
   var grid = Array.ofDim[Boolean](nHeight, nWidth)
-  var currentMino: Mino = new Mino
 
-  def initMino(): Unit = {
-    currentMino = new Mino
+  override def render(r: Render): Unit = {
+    for (x <- 0 to nWidth) {
+      for (y <- 0 to nHeight) {
+        r.drawFrame(x, y)
+      }
+    }
   }
 }
 

@@ -7,45 +7,36 @@ import dom.html.Canvas
 import scala.scalajs.js.JSApp
 import scala.scalajs.js.timers.setTimeout
 
+trait Renderable {
+  def render(r: Render): Unit
+}
+
 class Render(id: String, width: Int, height: Int) {
 
   val canvas = document
     .getElementById(id)
     .asInstanceOf[Canvas]
+  canvas.width = width
+  canvas.height = height
   val context = canvas
     .getContext("2d")
     .asInstanceOf[Context]
-  canvas.width = width
-  canvas.height = height
-  val board = Board(h=20, w=10)
-  val blockH = height / board.nHeight
-  val blockW = width / board.nWidth
+  val blockH = height / 20
+  val blockW = width / 10
 
-  def draw(): Unit = {
+  def render(renderables: List[Renderable]): Unit = {
     context.clearRect(0, 0, width, height)
-    drawBoard
-    drawCurrentMino()
+    renderables.foreach(_.render(this))
   }
 
-  def drawBoard(): Unit = {
-    for (x <- 0 to board.nWidth) {
-      for (y <- 0 to board.nHeight) {
-        drawFrame(x, y)
-      }
-    }
-  }
 
-  def drawCurrentMino(): Unit = {
-    board.currentMino eachPositions(drawBlock(_, _))
-  }
-
-  private def drawFrame(x: Int, y: Int): Unit = {
+  def drawFrame(x: Int, y: Int): Unit = {
     val blockX = x * blockW
     val blockY = y * blockH
     context.strokeRect(blockX, blockY, blockW, blockH)
   }
 
-  private def drawBlock(x: Int, y: Int): Unit = {
+  def drawBlock(x: Int, y: Int): Unit = {
     val blockX = x * blockW
     val blockY = y * blockH
     context.fillRect(blockX, blockY, blockW, blockH)
