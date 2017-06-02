@@ -30,13 +30,15 @@ class Render(id: String, width: Int, height: Int) {
   }
 
 
-  def drawFrame(x: Int, y: Int): Unit = {
+  def drawFrame(x: Int, y: Int, color:String="black"): Unit = {
+    context.strokeStyle = color
     val blockX = x * blockW
     val blockY = y * blockH
     context.strokeRect(blockX, blockY, blockW, blockH)
   }
 
-  def drawBlock(x: Int, y: Int): Unit = {
+  def drawBlock(x: Int, y: Int, color:String="black"): Unit = {
+    context.fillStyle = color
     val blockX = x * blockW
     val blockY = y * blockH
     context.fillRect(blockX, blockY, blockW, blockH)

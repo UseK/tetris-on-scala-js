@@ -27,9 +27,13 @@ class Board(val nHeight: Int, val nWidth: Int) extends Renderable{
   var grid = Array.ofDim[Boolean](nHeight, nWidth)
 
   override def render(r: Render): Unit = {
-    for (x <- 0 to nWidth) {
-      for (y <- 0 to nHeight) {
-        r.drawFrame(x, y)
+    for (x <- 0 until nWidth) {
+      for (y <- 0 until nHeight) {
+        if (grid(y)(x)) {
+          r.drawBlock(x, y, "blue")
+        } else {
+          r.drawFrame(x, y)
+        }
       }
     }
   }
