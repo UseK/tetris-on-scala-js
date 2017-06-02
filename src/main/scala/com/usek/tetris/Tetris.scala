@@ -8,15 +8,15 @@ object Tetris extends JSApp{
   def main(): Unit = {
     val r = Render("stage", width = 250, height = 500)
     val board = new Board(20, 10)
-    val currentMino = new Mino
-    val rendaerables = List(board, currentMino)
-    r.render(rendaerables)
+    var currentMino = Mino()
+    r.render(List(board, currentMino))
     setInterval(1000) {
-      tick(r, currentMino, rendaerables)
+      currentMino = tick(r, currentMino, board)
     }
   }
-  def tick(r: Render, m: Mino, rendderables: List[Renderable]): Unit = {
-    m.position.y += 1
-    r.render(rendderables)
+  def tick(r: Render, m: Mino, board: Board): Mino = {
+    val afterMino = board.downMino(m)
+    r.render(List(board, afterMino))
+    afterMino
   }
 }

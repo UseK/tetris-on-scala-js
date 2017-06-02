@@ -5,12 +5,11 @@ package com.usek.tetris
   */
 case class Position(var x: Int, var y:Int)
 
-class Mino extends Renderable {
+class Mino(val position: Position=Position(0, 0)) extends Renderable {
   val shape = List(
     List(true, false, false),
     List(true, true,  true)
   )
-  val position = Position(0, 0)
 
   def eachPositions(op: (Int, Int) => Unit) {
     for (y <- 0 until shape.length) {
@@ -24,5 +23,11 @@ class Mino extends Renderable {
 
   override def render(r: Render): Unit = {
     eachPositions(r.drawBlock(_, _))
+  }
+}
+
+object Mino {
+  def apply(position: Position=Position(0, 0)): Mino = {
+    new Mino(position)
   }
 }
