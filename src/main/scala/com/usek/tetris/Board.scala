@@ -2,8 +2,24 @@ package com.usek.tetris
 import org.scalajs.dom.{ CanvasRenderingContext2D => Context }
 
 class Board(val nHeight: Int, val nWidth: Int) extends Renderable{
-  def downMino(m: Mino) = {
+
+  def over(downed: Mino): Boolean = {
+    downed.eachPositions((_, y) =>
+      if (y >= nHeight) {
+        return true
+      }
+    )
+    false
+  }
+
+  def downMino(m: Mino): Mino = {
     val downed = Mino(Position(m.position.x, m.position.y + 1))
+    if (over(downed)) {
+      m.eachPositions((x, y) =>
+        grid(y)(x) = true
+      )
+      return Mino()
+    }
     downed
   }
 

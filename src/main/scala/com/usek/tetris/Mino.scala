@@ -3,7 +3,7 @@ package com.usek.tetris
 /**
   * Created by yf on 2017/05/30.
   */
-case class Position(var x: Int, var y:Int)
+case class Position(val x: Int, val y:Int)
 
 class Mino(val position: Position=Position(0, 0)) extends Renderable {
   val shape = List(
