@@ -4,8 +4,8 @@ import org.scalajs.dom.{ CanvasRenderingContext2D => Context }
 class Board(val nHeight: Int, val nWidth: Int) extends Renderable{
 
   def over(downed: Mino): Boolean = {
-    downed.eachPositions((_, y) =>
-      if (y >= nHeight) {
+    downed.eachPositions((x, y) =>
+      if (y >= nHeight || grid(y)(x)) {
         return true
       }
     )
