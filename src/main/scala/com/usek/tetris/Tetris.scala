@@ -1,6 +1,7 @@
 import com.usek.tetris._
 import scala.scalajs.js.JSApp
 import scala.scalajs.js.timers.setInterval
+import org.scalajs.dom.document
 
 object Tetris extends JSApp{
   def main(): Unit = {
@@ -8,13 +9,23 @@ object Tetris extends JSApp{
     val render: Render = initResult._1
     val board: Board = initResult._2
     var currentMino: Mino = initResult._3
+    document.body.onkeydown = { e =>
+      currentMino = e.keyCode match {
+        case (37) => currentMino.moved(-1, 0)
+        case (39) => currentMino.moved(1, 0)
+        case (40) => currentMino.moved(0, 1)
+        case (_) => currentMino
+      }
+      println(currentMino.position)
+      render.render(List(board, currentMino))
+    }
 
     setInterval(1000) {
       currentMino = tick(render, currentMino, board)
     }
   }
 
-  def init() = {
+  private def init() = {
     val render = Render("stage", width = 250, height = 500)
     val board = new Board(20, 10)
     val currentMino = Mino()
@@ -22,7 +33,7 @@ object Tetris extends JSApp{
     (render, board, currentMino)
   }
 
-  def tick(r: Render, m: Mino, board: Board): Mino = {
+  private def tick(r: Render, m: Mino, board: Board): Mino = {
     val afterMino = board.downMino(m)
     r.render(List(board, afterMino))
     afterMino

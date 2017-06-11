@@ -21,6 +21,10 @@ class Mino(val position: Position=Position(0, 0)) extends Renderable {
     }
   }
 
+  def moved(x: Int, y:Int): Mino = {
+    Mino(Position(position.x + x, position.y + y))
+  }
+
   override def render(r: Render): Unit = {
     eachPositions(r.drawBlock(_, _))
   }

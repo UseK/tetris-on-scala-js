@@ -13,7 +13,7 @@ class Board(val nHeight: Int, val nWidth: Int) extends Renderable{
   }
 
   def downMino(m: Mino): Mino = {
-    val downed = Mino(Position(m.position.x, m.position.y + 1))
+    val downed = m.moved(0, 1)
     if (over(downed)) {
       m.eachPositions((x, y) =>
         grid(y)(x) = true
