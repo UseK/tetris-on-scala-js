@@ -3,7 +3,7 @@ import org.scalajs.dom.{ CanvasRenderingContext2D => Context }
 
 class Board(val nHeight: Int, val nWidth: Int) extends Renderable {
 
-  var grid = Array.ofDim[Boolean](nHeight, nWidth)
+  val grid = Array.ofDim[Boolean](nHeight, nWidth)
 
   def over(downed: Mino): Boolean = {
     downed.eachPositions((x, y) =>
