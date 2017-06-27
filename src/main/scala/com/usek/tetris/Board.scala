@@ -1,7 +1,9 @@
 package com.usek.tetris
 import org.scalajs.dom.{ CanvasRenderingContext2D => Context }
 
-class Board(val nHeight: Int, val nWidth: Int) extends Renderable{
+class Board(val nHeight: Int, val nWidth: Int) extends Renderable {
+
+  var grid = Array.ofDim[Boolean](nHeight, nWidth)
 
   def over(downed: Mino): Boolean = {
     downed.eachPositions((x, y) =>
@@ -21,9 +23,6 @@ class Board(val nHeight: Int, val nWidth: Int) extends Renderable{
       downed
     }
   }
-
-
-  var grid = Array.ofDim[Boolean](nHeight, nWidth)
 
   override def render(r: Render): Unit = {
     for (x <- 0 until nWidth) {
