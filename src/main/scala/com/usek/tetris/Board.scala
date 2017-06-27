@@ -15,12 +15,11 @@ class Board(val nHeight: Int, val nWidth: Int) extends Renderable{
   def downMino(m: Mino): Mino = {
     val downed = m.moved(0, 1)
     if (over(downed)) {
-      m.eachPositions((x, y) =>
-        grid(y)(x) = true
-      )
-      return Mino()
+      m.eachPositions((x, y) => grid(y)(x) = true)
+      Mino()
+    } else {
+      downed
     }
-    downed
   }
 
 
