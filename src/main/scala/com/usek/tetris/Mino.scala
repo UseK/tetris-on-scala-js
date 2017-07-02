@@ -6,6 +6,11 @@ package com.usek.tetris
 case class Position(val x: Int, val y:Int)
 
 class Mino(val position: Position=Position(0, 0)) extends Renderable {
+  def rotated: Mino = {
+    // TODO: 実装
+    this
+  }
+
   val shape = List(
     List(true, false, false),
     List(true, true,  true)
