@@ -11,19 +11,12 @@ class Mino(val position: Position=Position(0, 0)) extends Renderable {
     this
   }
 
-  val shape = List(
-    List(true, false, false),
-    List(true, true,  true)
-  )
+  val shape = List((0, 0), (0, 1), (1, 1), (2, 1))
 
   def eachPositions(op: (Int, Int) => Unit) {
-    for (y <- 0 until shape.length) {
-      for (x <- 0 until shape(y).length) {
-        if (shape(y)(x)) {
-          op(x + position.x, y + position.y)
-        }
-      }
-    }
+    shape.foreach((item) =>
+      op(item._1 + position.x, item._2 + position.y)
+    )
   }
 
   def moved(x: Int, y:Int): Mino = {
