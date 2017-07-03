@@ -13,4 +13,12 @@ class MinoSuite extends  FunSuite {
     val expected = List((0, 0), (0, 1), (1, 1), (2, 1))
     assert(expected == positions)
   }
+
+  test("Mino rotated") {
+    val mino = Mino()
+    val rotatedMino = mino.rotated()
+    val expected = List((0,0), (-1,0), (-1,1), (-1,2))
+
+    assert(expected == rotatedMino.shape)
+  }
 }

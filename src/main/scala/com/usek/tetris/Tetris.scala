@@ -14,7 +14,8 @@ object Tetris extends JSApp{
         case (37) => currentMino.moved(-1, 0)
         case (39) => currentMino.moved(1, 0)
         case (40) => currentMino.moved(0, 1)
-        case (_) => currentMino
+        case (80) => currentMino.rotated()
+        case (x) => {println(x); currentMino}
       }
       println(currentMino.position)
       render.render(List(board, currentMino))

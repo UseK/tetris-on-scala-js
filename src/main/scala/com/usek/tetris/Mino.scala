@@ -5,13 +5,19 @@ package com.usek.tetris
   */
 case class Position(val x: Int, val y:Int)
 
-class Mino(val position: Position=Position(0, 0)) extends Renderable {
-  def rotated: Mino = {
-    // TODO: 実装
-    this
+
+class Mino(val position: Position=Position(0, 0),
+           val shape: List[(Int, Int)]=List((0, 0), (0, 1), (1, 1), (2, 1))
+          ) extends Renderable {
+
+//class Mino(val position: Position=Position(0, 0)) extends Renderable {
+  def rotated(): Mino = {
+    val rotatedShape = this.shape.map((item) =>
+      (-item._2, item._1)
+    )
+    new Mino(position=this.position, shape=rotatedShape)
   }
 
-  val shape = List((0, 0), (0, 1), (1, 1), (2, 1))
 
   def eachPositions(op: (Int, Int) => Unit) {
     shape.foreach((item) =>
