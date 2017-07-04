@@ -17,7 +17,6 @@ object Tetris extends JSApp{
         case (80) => currentMino.rotated()
         case (x) => {println(x); currentMino}
       }
-      println(currentMino.position)
       render.render(List(board, currentMino))
     }
 

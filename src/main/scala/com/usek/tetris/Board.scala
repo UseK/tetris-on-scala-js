@@ -18,10 +18,25 @@ class Board(val nHeight: Int, val nWidth: Int) extends Renderable {
     val downed = m.moved(0, 1)
     if (over(downed)) {
       m.eachPositions((x, y) => grid(y)(x) = true)
+      disappearLine()
       Mino()
     } else {
       downed
     }
+  }
+
+  def disappearLine(): Unit = {
+    grid.foreach((line) =>
+      if (isLineComplete(line)) {
+        for (i <- 0 until line.length) {
+          line(i) = false
+        }
+      }
+    )
+  }
+
+  def isLineComplete(line: Array[Boolean]): Boolean = {
+    line.forall((b) => b == true)
   }
 
   override def render(r: Render): Unit = {
