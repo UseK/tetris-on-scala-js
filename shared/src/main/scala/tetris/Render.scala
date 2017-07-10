@@ -1,11 +1,7 @@
 package tetris
 
-import org.scalajs.dom
-import dom.document
-import dom.{CanvasRenderingContext2D => Context}
-import dom.html.Canvas
-import scala.scalajs.js.JSApp
-import scala.scalajs.js.timers.setTimeout
+import org.scalajs.dom.html.Canvas
+import org.scalajs.dom.{document, CanvasRenderingContext2D => Context}
 
 trait Renderable {
   def render(r: Render): Unit

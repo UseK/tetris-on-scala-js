@@ -1,9 +1,9 @@
 package tetris
 
+import org.scalajs.dom.document
+
 import scala.scalajs.js.JSApp
 import scala.scalajs.js.timers.setInterval
-import org.scalajs.dom
-import dom.document
 
 object Tetris extends JSApp{
   def main(): Unit = {

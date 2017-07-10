@@ -1,7 +1,5 @@
 package tetris
 
-import org.scalajs.dom.{CanvasRenderingContext2D => Context}
-
 class Board(val nHeight: Int, val nWidth: Int) extends Renderable {
 
   private val grid = Array.ofDim[Boolean](nHeight, nWidth)
