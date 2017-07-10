@@ -1,4 +1,5 @@
-import com.usek.tetris.{Board, Mino, Position}
+package tetris
+
 import org.scalatest.FunSuite
 class BoardSuite extends FunSuite {
   test("Mino on border should be over") {

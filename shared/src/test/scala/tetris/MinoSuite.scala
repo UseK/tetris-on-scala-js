@@ -1,7 +1,8 @@
+package tetris
+
 /**
   * Created by yf on 2017/06/27.
   */
-import com.usek.tetris.Mino
 import org.scalatest.FunSuite
 class MinoSuite extends  FunSuite {
   test("Mino eachPositions") {

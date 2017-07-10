@@ -1,5 +1,6 @@
-package com.usek.tetris
-import org.scalajs.dom.{ CanvasRenderingContext2D => Context }
+package tetris
+
+import org.scalajs.dom.{CanvasRenderingContext2D => Context}
 
 class Board(val nHeight: Int, val nWidth: Int) extends Renderable {
 

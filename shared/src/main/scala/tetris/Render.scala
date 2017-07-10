@@ -1,4 +1,4 @@
-package com.usek.tetris
+package tetris
 
 import org.scalajs.dom
 import dom.document

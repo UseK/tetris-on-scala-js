@@ -1,4 +1,4 @@
-package com.usek.tetris
+package tetris
 
 /**
   * Created by yf on 2017/05/30.
