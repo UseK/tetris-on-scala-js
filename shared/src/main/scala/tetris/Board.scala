@@ -1,10 +1,9 @@
 package tetris
 
-class Board(val nHeight: Int, val nWidth: Int) extends Renderable {
+class Board(val nHeight: Int, val nWidth: Int) {
 
-  private val grid = Array.ofDim[Boolean](nHeight, nWidth)
-  private val filledBlocks = Set()
-
+  protected val grid = Array.ofDim[Boolean](nHeight, nWidth)
+  protected val filledBlocks = Set()
 
   def over(downed: Mino): Boolean = {
     downed.eachPositions((x, y) =>
@@ -12,7 +11,6 @@ class Board(val nHeight: Int, val nWidth: Int) extends Renderable {
         return true
       }
     )
-
     false
   }
 
@@ -39,18 +37,6 @@ class Board(val nHeight: Int, val nWidth: Int) extends Renderable {
 
   def isLineComplete(line: Array[Boolean]): Boolean = {
     line.forall((b) => b == true)
-  }
-
-  override def render(r: Render): Unit = {
-    for (x <- 0 until nWidth) {
-      for (y <- 0 until nHeight) {
-        if (grid(y)(x)) {
-          r.drawBlock(x, y, "blue")
-        } else {
-          r.drawFrame(x, y)
-        }
-      }
-    }
   }
 }
 
