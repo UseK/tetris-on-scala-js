@@ -19,9 +19,9 @@ object Tetris extends JSApp{
         case (80) => currentMino.rotated()
         case (x) => {println(x); currentMino}
       }
-      render.render(List(board, currentMino))
+      render.render(List(board))
+      render.render(currentMino)
     }
-
     setInterval(1000) {
       currentMino = tick(render, currentMino, board)
     }
@@ -31,14 +31,14 @@ object Tetris extends JSApp{
     val render = Render("stage", width = 250, height = 500)
     val board = new BoardJS(20, 10)
     val currentMino = Mino()
-    render.render(List(board, currentMino))
     (render, board, currentMino)
   }
 
   private def tick(r: Render, m: Mino,
                    board: BoardJS): Mino = {
     val afterMino = board.downMino(m)
-    r.render(List(board, afterMino))
+    r.render(List(board))
+    r.render(afterMino)
     afterMino
   }
 }

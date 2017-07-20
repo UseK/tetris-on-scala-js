@@ -21,5 +21,3 @@ class BoardJS(override val nHeight: Int,
 
 }
 
-
-

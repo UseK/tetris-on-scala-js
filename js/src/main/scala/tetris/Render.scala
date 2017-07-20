@@ -25,6 +25,9 @@ class Render(id: String, width: Int, height: Int) {
     renderables.foreach(_.render(this))
   }
 
+  def render(mino: Mino): Unit = {
+    mino.eachPositions(drawBlock(_, _))
+  }
 
   def drawFrame(x: Int, y: Int, color:String="black"): Unit = {
     context.strokeStyle = color

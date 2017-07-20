@@ -7,7 +7,7 @@ case class Position(val x: Int, val y:Int)
 
 
 class Mino(val position: Position,
-           val shape: List[(Int, Int)]) extends Renderable {
+           val shape: List[(Int, Int)]) {
   def rotated(): Mino = {
     val rotatedShape = this.shape.map((item) =>
       (-item._2, item._1)
@@ -26,9 +26,6 @@ class Mino(val position: Position,
     )
   }
 
-  override def render(r: Render): Unit = {
-    eachPositions(r.drawBlock(_, _))
-  }
 }
 
 object Mino {
