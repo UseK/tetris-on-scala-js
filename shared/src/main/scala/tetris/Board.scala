@@ -1,6 +1,7 @@
 package tetris
 
-class Board(val nHeight: Int, val nWidth: Int) {
+class Board(val nHeight: Int, val nWidth: Int)
+  extends Blockable {
 
   protected val grid = Array.ofDim[Boolean](nHeight, nWidth)
   protected val filledBlocks = Set()
@@ -37,6 +38,18 @@ class Board(val nHeight: Int, val nWidth: Int) {
 
   def isLineComplete(line: Array[Boolean]): Boolean = {
     line.forall((b) => b == true)
+  }
+
+  override def eachBlocks(op: (Block) => Unit) {
+    for (y <- 0 until nHeight) {
+      for (x <- 0 until nWidth) {
+        if (grid(y)(x)) {
+          op(Block(x, y, Some("blue")))
+        } else {
+          op(Block(x, y, None))
+        }
+      }
+    }
   }
 }
 

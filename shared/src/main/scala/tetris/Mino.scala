@@ -7,7 +7,8 @@ case class Position(val x: Int, val y:Int)
 
 
 class Mino(val position: Position,
-           val shape: List[(Int, Int)]) {
+           val shape: List[(Int, Int)])
+  extends Blockable {
   def rotated(): Mino = {
     val rotatedShape = this.shape.map((item) =>
       (-item._2, item._1)
@@ -20,12 +21,21 @@ class Mino(val position: Position,
     Mino(Position(position.x + x, position.y + y), shape)
   }
 
-  def eachPositions(op: (Int, Int) => Unit) {
-    shape.foreach((item) =>
-      op(item._1 + position.x, item._2 + position.y)
-    )
+  override def eachBlocks(op: Block => Unit) {
+    shape.foreach { (item) =>
+      val x = item._1 + position.x
+      val y = item._2 + position.y
+      op(Block(x, y, Some("black")))
+    }
   }
 
+  def eachPositions(op: (Int, Int) => Unit): Unit = {
+    shape.foreach { (item) =>
+      val x = item._1 + position.x
+      val y = item._2 + position.y
+      op(x, y)
+    }
+  }
 }
 
 object Mino {
