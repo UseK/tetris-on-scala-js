@@ -1,7 +1,6 @@
 package tetris
 
-class Board(val nHeight: Int, val nWidth: Int)
-  extends Blockable {
+class Board(val nHeight: Int, val nWidth: Int) extends Blockable {
 
   protected val grid = Array.ofDim[Boolean](nHeight, nWidth)
   protected val filledBlocks = Set()
