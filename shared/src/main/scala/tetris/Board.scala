@@ -5,6 +5,14 @@ class Board(val nHeight: Int, val nWidth: Int) extends Blockable {
   protected val grid = Array.ofDim[Boolean](nHeight, nWidth)
   protected val filledBlocks = Set()
 
+  def showState(): Unit = {
+    def boolean2Int(b: Boolean): Int = if (b) 1 else 0
+    grid.foreach { (line) =>
+      line.map(boolean2Int(_)).foreach(print)
+      println
+    }
+  }
+
   def over(downed: Mino): Boolean = {
     downed.eachPositions((x, y) =>
       if (y >= nHeight || grid(y)(x)) {

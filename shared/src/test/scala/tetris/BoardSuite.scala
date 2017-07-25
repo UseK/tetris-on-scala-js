@@ -15,4 +15,23 @@ class BoardSuite extends FunSuite {
       mino = board.downMino(mino)
     }
   }
+
+  test("Board.disapperLine") {
+    val board = new Board(20, 10)
+
+    def dropMino(x: Int, shape: Option[List[(Int, Int)]]) = {
+      var mino = shape match {
+        case Some(s) => {Mino(Position(x, 0), s)}
+        case None => {Mino(Position(x, 0))}
+      }
+      for (i <- 0 to 19) {
+        mino = board.downMino(mino)
+      }
+    }
+    dropMino(0, None)
+    dropMino(3, None)
+    dropMino(6, None)
+    dropMino(9, Some(List((0, 0), (0, 1))))
+    board.showState()
+  }
 }
