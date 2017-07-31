@@ -2,7 +2,7 @@ package tetris
 
 class Board(val nHeight: Int, val nWidth: Int) extends Blockable {
 
-  protected val grid = Array.ofDim[Boolean](nHeight, nWidth)
+  var grid = Array.ofDim[Boolean](nHeight, nWidth)
   protected val filledBlocks = Set()
 
   def showState(): Unit = {
@@ -34,13 +34,9 @@ class Board(val nHeight: Int, val nWidth: Int) extends Blockable {
   }
 
   def disappearLine(): Unit = {
-    grid.foreach((line) =>
-      if (isLineComplete(line)) {
-        for (i <- 0 until line.length) {
-          line(i) = false
-        }
-      }
-    )
+    val disappered = grid.filterNot(isLineComplete(_))
+    val forFill = Array.ofDim[Boolean](nHeight - disappered.length, nWidth)
+    grid = Array.concat(forFill, disappered)
   }
 
   def isLineComplete(line: Array[Boolean]): Boolean = {

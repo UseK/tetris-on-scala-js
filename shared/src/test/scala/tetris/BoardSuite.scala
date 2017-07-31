@@ -32,6 +32,17 @@ class BoardSuite extends FunSuite {
     dropMino(3, None)
     dropMino(6, None)
     dropMino(9, Some(List((0, 0), (0, 1))))
-    board.showState()
+    val bottomLine = Array(
+      true, false, false,
+      true, false, false,
+      true, false, false,
+      true
+    )
+    val actualBottom = board.grid.reverse.head
+    println("---------------")
+    println(actualBottom.deep)
+    println(board.grid.length)
+    println("---------------")
+    assert(actualBottom.sameElements(bottomLine))
   }
 }
